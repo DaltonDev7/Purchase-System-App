@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+
+//boostrap
+@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+
+//font awesome
+@import url('../node_modules/@fortawesome/fontawesome-free/css/all.css');
+
+//ngselectt
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+//toastx
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+    background-color: #F2F6FC;
+}
+
+.btn-acciones{
+    font-size: 24px;
+    margin: 6px;
+    cursor: pointer;
+}
+
+.btn-close-modal{
+    font-size: 28px;
+    color: #004F83;
+    cursor: pointer;
+}
+
+.section-modal{
+    padding: 16px;
+}
+
+table, tr
+table, th
+table thead{
+    text-align: center;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

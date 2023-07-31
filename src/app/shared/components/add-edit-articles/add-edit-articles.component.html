@@ -1,0 +1,39 @@
+<div class="section-modal">
+  <div class="d-flex justify-content-end">
+    <div (click)="close()">
+      <i class="fa-solid fa-xmark btn-close-modal"></i>
+    </div>
+  </div>
+  <!-- s<hr class="hr" /> -->
+
+  <h4>Agregar</h4>
+
+  <div class="section-form">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="">Descripcion</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="">Marca</label>
+        <ng-select [items]="[]" bindLabel="name" bindValue="id">
+        </ng-select>
+      </div>
+      <div class="col-12 mb-3">
+        <label for="">Unidad de medida</label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="col-12 mb-3">
+        <label for="">Stock</label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+
+    <button class="btn btn-success w-100">Guardar</button>
+
+  </div>
+
+
+
+
+</div>
