@@ -16,12 +16,13 @@
       </div>
       <div class="col-12 mb-3">
         <label for="">Marca</label>
-        <ng-select [items]="[]" bindLabel="name" bindValue="id">
+        <ng-select [items]="brandCombox" placeholder="Seleccione" bindLabel="text" bindValue="id">
         </ng-select>
       </div>
       <div class="col-12 mb-3">
         <label for="">Unidad de medida</label>
-        <input type="text" class="form-control">
+        <ng-select [items]="[]" placeholder="Seleccione" bindLabel="text" bindValue="id">
+        </ng-select>
       </div>
       <div class="col-12 mb-3">
         <label for="">Stock</label>

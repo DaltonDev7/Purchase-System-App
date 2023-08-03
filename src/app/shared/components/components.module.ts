@@ -10,6 +10,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgxMaskModule } from 'ngx-mask';
 import { AddEditBrandComponent } from './add-edit-brand/add-edit-brand.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddEditProvidersComponent,
     AddEditPurchaseOrdersComponent,
     AddEditUnitMeasurementComponent,
-    AddEditBrandComponent
+    AddEditBrandComponent,
+    ConfirmDeleteComponent
   ],
   imports: [
     CommonModule,

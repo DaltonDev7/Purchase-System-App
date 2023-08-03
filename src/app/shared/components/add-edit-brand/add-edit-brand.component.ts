@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AddEditDeparmentsComponent } from '../add-edit-deparments/add-edit-deparments.component';
 import { BrandServices } from 'src/app/core/services/brand.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { GeneralStateService } from 'src/app/core/services/general-state.service';
 
 @Component({
   selector: 'app-add-edit-brand',
@@ -11,17 +13,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddEditBrandComponent implements OnInit {
 
-
   public Description: string = ''
   public brandForm!: FormGroup
+  public title: string = 'Agregar'
+  public isUpdate = false;
 
-  constructor(public dialogRef: MatDialogRef<AddEditDeparmentsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private brandServices: BrandServices, private fb: FormBuilder) { }
+  constructor(
+    private toastService: ToastrService,
+    private generalStateService : GeneralStateService,
+    public dialogRef: MatDialogRef<AddEditDeparmentsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, private brandServices: BrandServices,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.brandForm = this.fb.group({
-      Description: [null, [Validators.required, Validators.minLength(3)]]
+      description: [null, [Validators.required, Validators.minLength(3)]]
     })
+
+    if (this.data !== undefined) {
+      console.log(this.data);
+      this.brandForm.patchValue(this.data)
+      this.title = 'Actualizar'
+      this.isUpdate = true;
+    }
+
   }
 
   public close(): void {
@@ -29,12 +44,24 @@ export class AddEditBrandComponent implements OnInit {
   }
 
   public save() {
-    console.log(this.brandForm.value);
-    console.log('asdfdsa');
+    this.brandServices.add(this.brandForm.value).subscribe({
+      next: () => {
+        this.toastService.success('Guardado!')
+        this.dialogRef.close();
+        this.generalStateService.dispachEvent()
+      }
+    })
+  }
 
-    this.brandServices.add(this.Description).subscribe({
-      next: (data) => {
-        console.log('guardado');
+  public update() {
+    this.brandServices.edit({
+      ...this.data,
+      description : this.brandForm.get('description')?.value
+    }).subscribe({
+      next: () => {
+        this.toastService.success('Actualizado!')
+        this.dialogRef.close();
+        this.generalStateService.dispachEvent()
       }
     })
   }

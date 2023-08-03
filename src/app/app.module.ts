@@ -13,6 +13,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from './shared/components/components.module';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { ComponentsModule } from './shared/components/components.module';
      MatDialogModule,
      NgSelectModule,
      FormsModule ,
+     NgxPaginationModule,
+     ToastrModule.forRoot(), // ToastrModule added
      HttpClientModule,
      ReactiveFormsModule,
      ComponentsModule

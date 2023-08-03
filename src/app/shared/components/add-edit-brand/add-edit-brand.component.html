@@ -6,7 +6,7 @@
     </div>
     <!-- s<hr class="hr" /> -->
   
-    <h4>Agregar</h4>
+    <h4>{{title}}</h4>
   
     <div class="section-form">
       <div class="row">
@@ -14,12 +14,14 @@
       
           <div class="col-12 mb-3">
             <label for="">Descripcion</label>
-            <input type="text" class="form-control" formControlName="Description">
+            <input type="text" class="form-control" formControlName="description">
           </div>
         </form>
       </div>
   
-      <button class="btn btn-success w-100" (click)="save()">Guardar</button>
+      <button *ngIf="!isUpdate" class="btn btn-success w-100" (click)="save()">Guardar</button>
+      <button *ngIf="isUpdate" class="btn btn-success w-100" (click)="update()">Actualizar</button>
+
     </div>
   
   </div>

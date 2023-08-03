@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListBrandComponent } from './list-brand/list-brand.component';
 import { BrandRoutingModule } from './brand-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     BrandRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class BrandModule { }

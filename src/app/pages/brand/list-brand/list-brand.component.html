@@ -10,15 +10,16 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Mark</td>
+        <tr *ngFor="let item of brand | paginate: { itemsPerPage: 5, currentPage: currentPage }">
+            <td>{{item.description}}</td>
             <td>
                 <div>
-                    <i class="fa-solid fa-trash btn-acciones" style="color: #EF3E36;"></i>
-                    <i class="fa-solid fa-pen-to-square btn-acciones" style="color: #175676;"></i>
+                    <i class="fa-solid fa-trash btn-acciones" (click)="delete(item.id)" style="color: #EF3E36;"></i>
+                    <i class="fa-solid fa-pen-to-square btn-acciones" (click)="update(item)" style="color: #175676;"></i>
                 </div>
             </td>
         </tr>
+        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 
     </tbody>
 </table>

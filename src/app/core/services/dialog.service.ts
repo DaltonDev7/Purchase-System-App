@@ -5,6 +5,8 @@ import { AddEditBrandComponent } from 'src/app/shared/components/add-edit-brand/
 import { AddEditDeparmentsComponent } from 'src/app/shared/components/add-edit-deparments/add-edit-deparments.component';
 import { AddEditProvidersComponent } from 'src/app/shared/components/add-edit-providers/add-edit-providers.component';
 import { AddEditUnitMeasurementComponent } from 'src/app/shared/components/add-edit-unit-measurement/add-edit-unit-measurement.component';
+import { Brand } from '../models/brand';
+import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 
 @Injectable({
   providedIn: 'root'
@@ -37,15 +39,25 @@ export class DialogService {
     })
   }
 
-  public openAddEditBrand() {
+  public openAddEditBrand(item?: Brand) {
     this.dialog.open(AddEditBrandComponent, {
       width: '350px',
       height: 'auto',
       disableClose: true,
+      data: item
     })
   }
 
-  public openAddEditOpenMesurement(){
+  public confirmDelete(id?:number){
+    this.dialog.open(ConfirmDeleteComponent,{
+      width: '350px',
+      height: 'auto',
+      disableClose: true,
+      data:id
+    })
+  }
+
+  public openAddEditOpenMesurement() {
     this.dialog.open(AddEditUnitMeasurementComponent, {
       width: '350px',
       height: 'auto',
