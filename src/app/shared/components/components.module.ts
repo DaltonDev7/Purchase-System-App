@@ -11,6 +11,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { AddEditBrandComponent } from './add-edit-brand/add-edit-brand.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
+import { NgxUpperCaseDirectiveModule } from 'ngx-upper-case-directive';
 
 
 
@@ -29,6 +30,7 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
     NgSelectModule,
     NgxMaskModule.forRoot(),
     FormsModule,
+    NgxUpperCaseDirectiveModule,
     ReactiveFormsModule
   ]
 })

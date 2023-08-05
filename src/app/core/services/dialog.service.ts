@@ -7,6 +7,7 @@ import { AddEditProvidersComponent } from 'src/app/shared/components/add-edit-pr
 import { AddEditUnitMeasurementComponent } from 'src/app/shared/components/add-edit-unit-measurement/add-edit-unit-measurement.component';
 import { Brand } from '../models/brand';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
+import { UnitMeasurement } from '../models/unit-measurement';
 
 @Injectable({
   providedIn: 'root'
@@ -49,19 +50,22 @@ export class DialogService {
   }
 
   public confirmDelete(id?:number){
-    this.dialog.open(ConfirmDeleteComponent,{
+    let confirmDialog = this.dialog.open(ConfirmDeleteComponent,{
       width: '350px',
       height: 'auto',
       disableClose: true,
       data:id
     })
+
+    return confirmDialog.afterClosed();
   }
 
-  public openAddEditOpenMesurement() {
+  public openAddEditOpenMesurement(item?:UnitMeasurement) {
     this.dialog.open(AddEditUnitMeasurementComponent, {
       width: '350px',
       height: 'auto',
       disableClose: true,
+      data: item
     })
   }
 

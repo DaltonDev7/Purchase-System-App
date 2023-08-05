@@ -1,12 +1,7 @@
 <div class="section-modal">
-    <div class="d-flex justify-content-end">
-      <div (click)="close()">
-        <i class="fa-solid fa-xmark btn-close-modal"></i>
-      </div>
-    </div>
-    <h3>¿Estas seguro de eliminar este registro?</h3>
-    <div class="w-100">
-        <button class="btn btn-danger">Cancelar</button>
-        <button class="btn btn-success">Aceptar</button>
+    <p class="text-center mb-3 mt-3">¿Estas seguro de eliminar este registro?</p>
+    <div class="w-100 d-flex">
+        <button class="btn btn-danger w-100" (click)="cancelar()">Cancelar</button>
+        <button class="btn btn-success w-100" (click)="aceptar()">Aceptar</button>
     </div>
 </div>

@@ -31,9 +31,7 @@ export abstract class BaseService<T> implements IBaseServices<T> {
 
   delete(id: number): Observable<any> {
     let params = new HttpParams().set('id', id);
-    return this.http.delete(environment.apiUrl + `/${this.endpoint}`, {
-      params,
-    });
+    return this.http.delete(environment.apiUrl + `/${this.endpoint}/${id}`);
   }
 
   getById(id: number): Observable<any> {

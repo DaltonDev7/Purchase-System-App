@@ -1,24 +1,32 @@
 <div class="section-modal">
-    <div class="d-flex justify-content-end">
-      <div (click)="close()">
-        <i class="fa-solid fa-xmark btn-close-modal"></i>
-      </div>
+  <div class="d-flex justify-content-end">
+    <div (click)="close()">
+      <i class="fa-solid fa-xmark btn-close-modal"></i>
     </div>
-    <!-- s<hr class="hr" /> -->
-  
-    <h4>Agregar</h4>
-  
-    <div class="section-form">
-      <div class="row">
-
-          <div class="col-12 mb-3">
-            <label for="">Descripcion</label>
-            <input type="text" class="form-control" [(ngModel)]="Description">
-          </div>
-
-      </div>
-  
-      <button class="btn btn-success w-100" (click)="save()">Guardar</button>
-    </div>
-  
   </div>
+  <!-- s<hr class="hr" /> -->
+
+  <h4>{{title}}</h4>
+
+  <div class="section-form">
+    <div class="row">
+
+      <form [formGroup]="unitForm">
+
+        <div class="col-12 mb-3">
+          <label for="">Descripcion</label>
+          <input upperCase type="text" class="form-control" formControlName="description">
+        </div>
+
+      </form>
+
+    </div>
+
+    <button *ngIf="!isUpdate" [disabled]="!unitForm.valid" class="btn btn-success w-100"
+      (click)="save()">Guardar</button>
+
+    <button *ngIf="isUpdate" [disabled]="!unitForm.valid" class="btn btn-success w-100"
+      (click)="update()">Actualizar</button>
+  </div>
+
+</div>

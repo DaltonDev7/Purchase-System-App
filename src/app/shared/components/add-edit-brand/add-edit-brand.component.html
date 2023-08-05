@@ -14,12 +14,12 @@
       
           <div class="col-12 mb-3">
             <label for="">Descripcion</label>
-            <input type="text" class="form-control" formControlName="description">
+            <input upperCase type="text" class="form-control" formControlName="description">
           </div>
         </form>
       </div>
   
-      <button *ngIf="!isUpdate" class="btn btn-success w-100" (click)="save()">Guardar</button>
+      <button *ngIf="!isUpdate" class="btn btn-success w-100" [disabled]="!brandForm.valid" (click)="save()">Guardar</button>
       <button *ngIf="isUpdate" class="btn btn-success w-100" (click)="update()">Actualizar</button>
 
     </div>

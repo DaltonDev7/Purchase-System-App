@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListUnitMeasurementComponent } from './list-unit-measurement/list-unit-measurement.component';
 import { UnitMeasurementRoutingModule } from './unit-measurement-routing.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -11,7 +12,8 @@ import { UnitMeasurementRoutingModule } from './unit-measurement-routing.module'
   ],
   imports: [
     CommonModule,
-    UnitMeasurementRoutingModule
+    UnitMeasurementRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class UnitMeasurementModule { }

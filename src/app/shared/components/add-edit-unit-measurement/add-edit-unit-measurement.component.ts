@@ -1,7 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { BrandServices } from 'src/app/core/services/brand.service';
+import { GeneralStateService } from 'src/app/core/services/general-state.service';
 import { UnitMeasurementService } from 'src/app/core/services/unit-measurement.service';
 
 @Component({
@@ -12,11 +14,30 @@ import { UnitMeasurementService } from 'src/app/core/services/unit-measurement.s
 export class AddEditUnitMeasurementComponent {
 
   public Description: string = ''
+  unitForm!:FormGroup
+  public title: string = 'Agregar'
+  public isUpdate = false;
 
-  constructor(public dialogRef: MatDialogRef<AddEditUnitMeasurementComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private measurementUnit: UnitMeasurementService) { }
+  constructor(
+    private toastService: ToastrService,
+    private generalStateService : GeneralStateService,
+    public dialogRef: MatDialogRef<AddEditUnitMeasurementComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, 
+    private measurementUnit: UnitMeasurementService,
+    private fb: FormBuilder
+    ) { }
 
   ngOnInit(): void {
+    this.unitForm = this.fb.group({
+      description: [null, [Validators.required, Validators.minLength(1)]]
+    })
+
+    if (this.data !== undefined) {
+      console.log(this.data);
+      this.unitForm.patchValue(this.data)
+      this.title = 'Actualizar'
+      this.isUpdate = true;
+    }
 
   }
 
@@ -25,14 +46,29 @@ export class AddEditUnitMeasurementComponent {
   }
 
   public save() {
-    console.log(this.Description);
-    console.log('asdfdsa');
 
-    this.measurementUnit.add(this.Description).subscribe({
-      next: (data) => {
-        console.log('guardado');
+    this.measurementUnit.add(this.unitForm.value).subscribe({
+      next: () => {
+        this.toastService.success('Guardado!')
+        this.dialogRef.close();
+        this.generalStateService.dispachEvent()
+      }
+    })
+  }
+
+  
+  public update() {
+    this.measurementUnit.edit({
+      ...this.data,
+      description : this.unitForm.get('description')?.value
+    }).subscribe({
+      next: () => {
+        this.toastService.success('Actualizado!')
+        this.dialogRef.close();
+        this.generalStateService.dispachEvent()
       }
     })
   }
 
 }
+

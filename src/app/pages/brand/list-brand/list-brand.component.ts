@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/core/models/brand';
 import { BrandServices } from 'src/app/core/services/brand.service';
 import { DialogService } from 'src/app/core/services/dialog.service';
@@ -19,7 +20,9 @@ export class ListBrandComponent implements OnInit {
     private generalStateServices: GeneralStateService,
     private dialogServices: DialogService,
     private branService: BrandServices,
-    private activedRoute: ActivatedRoute) { }
+    private toastService: ToastrService,
+    private activedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
     this.activedRoute.data.subscribe({
@@ -55,8 +58,17 @@ export class ListBrandComponent implements OnInit {
     this.dialogServices.openAddEditBrand(item)
   }
 
-  public delete(id:number){
-    this.dialogServices.confirmDelete(id)
+  public delete(id: number) {
+    this.dialogServices.confirmDelete(id).subscribe((data) => {
+
+      if (data) {
+        this.branService.delete(id).subscribe(() => {
+          this.toastService.success('Eliminado')
+          this.generalStateServices.dispachEvent()
+        })
+      }
+
+    })
   }
 
 }
