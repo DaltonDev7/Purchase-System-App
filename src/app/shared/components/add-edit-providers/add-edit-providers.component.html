@@ -13,9 +13,21 @@
 
             <div class="row">
                 <div class="col-12 mb-3">
-                    <label for="">Cedula</label>
-                    <input  class="form-control" mask="000-0000000-0" formControlName="idNumber">
+                    <label for="">Tipo de identificación</label>
+                    <ng-select [items]="tipoIdentificacion" placeholder="Seleccione"
+                        formControlName="identificationType" bindLabel="text" bindValue="id">
+                    </ng-select>
                 </div>
+
+                <div class="col-12 mb-3" *ngIf="supplierForm.get('identificationType')?.value == 1">
+                    <label for="">Cedula</label>
+                    <input class="form-control" mask="000-0000000-0" formControlName="idNumber">
+                </div>
+                <div class="col-12 mb-3" *ngIf="supplierForm.get('identificationType')?.value == 2">
+                    <label for="">RNC</label>
+                    <input class="form-control" mask="000000000" formControlName="idNumber">
+                </div>
+
                 <div class="col-12 mb-3">
                     <label for="">Nombre</label>
                     <input upperCase upperCase type="text" class="form-control" formControlName="name">
@@ -23,7 +35,8 @@
             </div>
         </form>
 
-        <button *ngIf="!isUpdate" class="btn btn-success w-100" [disabled]="!supplierForm.valid" (click)="save()">Guardar</button>
+        <button *ngIf="!isUpdate" class="btn btn-success w-100" [disabled]="!supplierForm.valid"
+            (click)="save()">Guardar</button>
         <button *ngIf="isUpdate" class="btn btn-success w-100" (click)="update()">Actualizar</button>
 
     </div>

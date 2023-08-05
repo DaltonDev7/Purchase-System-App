@@ -1,1 +1,37 @@
-<p>list-purchase-orders works!</p>
+<h3>Ordenes de compras</h3>
+
+<button class="btn btn-success mb-3" (click)="open()">Agregar orden</button>
+
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Numero de Orden</th>
+            <th scope="col">Articulo</th>
+            <th scope="col">Suplidor</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Total</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of purchaseOrderList | paginate: { itemsPerPage: 10, currentPage: currentPage } ">
+            <td>{{item.orderNumber}}</td>
+            <td>{{item.articleId}}</td>
+            <td>{{item.supplierId}}</td>
+            <td>{{item.departmentId}}</td>
+            <td>{{item.quantity | mask: 'separator' }}</td>
+            <td>RD$ {{item.unitCost}}</td>
+            <td>RD$ {{item.total}}</td>
+            <td>
+                <div>
+                    <i class="fa-solid fa-trash btn-acciones" (click)="delete(item.id)" style="color: #EF3E36;"></i>
+                    <i class="fa-solid fa-pen-to-square btn-acciones" (click)="update(item)" style="color: #175676;"></i>
+                </div>
+            </td>
+        </tr>
+
+        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    </tbody>
+</table>
