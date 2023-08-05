@@ -10,27 +10,35 @@
 
   <div class="section-form">
     <div class="row">
-      <div class="col-12 mb-3">
-        <label for="">Descripcion</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="col-12 mb-3">
-        <label for="">Marca</label>
-        <ng-select [items]="brandCombox" placeholder="Seleccione" bindLabel="text" bindValue="id">
-        </ng-select>
-      </div>
-      <div class="col-12 mb-3">
-        <label for="">Unidad de medida</label>
-        <ng-select [items]="[]" placeholder="Seleccione" bindLabel="text" bindValue="id">
-        </ng-select>
-      </div>
-      <div class="col-12 mb-3">
-        <label for="">Stock</label>
-        <input type="text" class="form-control">
-      </div>
+
+
+      <form [formGroup]="articleForm">
+
+        <div class="col-12 mb-3">
+          <label for="">Descripcion</label>
+          <input upperCase type="text" class="form-control" formControlName="description">
+        </div>
+        <div class="col-12 mb-3">
+          <label for="">Marca</label>
+          <ng-select [items]="brandCombox" placeholder="Seleccione" bindLabel="text" bindValue="id" formControlName="brandId">
+          </ng-select>
+        </div>
+        <div class="col-12 mb-3">
+          <label for="">Unidad de medida</label>
+          <ng-select [items]="unitCombox" placeholder="Seleccione" bindLabel="text" bindValue="id" formControlName="measurementUnitId">
+          </ng-select>
+        </div>
+        <div class="col-12 mb-3">
+          <label for="">Stock</label>
+          <input mask="00000" type="text" class="form-control" formControlName="stock">
+        </div>
+
+      </form>
     </div>
 
-    <button class="btn btn-success w-100">Guardar</button>
+    <button *ngIf="!isUpdate" class="btn btn-success w-100"  (click)="save()">Guardar</button>
+    <button *ngIf="isUpdate" class="btn btn-success w-100" (click)="update()">Actualizar</button>
+
 
   </div>
 

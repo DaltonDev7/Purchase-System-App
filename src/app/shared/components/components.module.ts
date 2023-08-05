@@ -12,6 +12,7 @@ import { AddEditBrandComponent } from './add-edit-brand/add-edit-brand.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { NgxUpperCaseDirectiveModule } from 'ngx-upper-case-directive';
+import { AddEditSupplierComponent } from './add-edit-supplier/add-edit-supplier.component';
 
 
 
@@ -23,7 +24,8 @@ import { NgxUpperCaseDirectiveModule } from 'ngx-upper-case-directive';
     AddEditPurchaseOrdersComponent,
     AddEditUnitMeasurementComponent,
     AddEditBrandComponent,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    AddEditSupplierComponent
   ],
   imports: [
     CommonModule,

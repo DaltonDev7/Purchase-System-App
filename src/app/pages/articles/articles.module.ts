@@ -5,6 +5,7 @@ import { ArticlesRoutingModule } from './articles-routing.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ListArticlesComponent } from './list-articles/list-articles.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CommonModule,
     ArticlesRoutingModule,
     MatDialogModule,
-    NgSelectModule
+    NgSelectModule,
+    NgxPaginationModule
   ]
 })
 export class ArticlesModule { }

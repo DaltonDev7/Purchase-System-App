@@ -1,5 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { GeneralStateService } from 'src/app/core/services/general-state.service';
+import { SupplierService } from 'src/app/core/services/supplier.service';
 
 @Component({
   selector: 'app-add-edit-providers',
@@ -8,14 +12,59 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class AddEditProvidersComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AddEditProvidersComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  public supplierForm!: FormGroup
+  public title: string = 'Agregar'
+  public isUpdate = false;
+
+  constructor(
+    private supplierServices:SupplierService,
+    private fb: FormBuilder,
+    private toastService: ToastrService,
+    private generalStateService : GeneralStateService,
+    public dialogRef: MatDialogRef<AddEditProvidersComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+    ) { }
 
   ngOnInit(): void {
+    this.supplierForm = this.fb.group({
+      idNumber:[null,[Validators.required]],
+      name: [null, [Validators.required, Validators.minLength(3)]]
+    })
 
+    if (this.data !== undefined) {
+      console.log(this.data);
+      this.supplierForm.patchValue(this.data)
+      this.title = 'Actualizar'
+      this.isUpdate = true;
+    }
   }
-
   public close(): void {
-    this.dialogRef.close({ redireccionar: true });
+    this.dialogRef.close();
   }
+
+  public save() {
+    this.supplierServices.add(this.supplierForm.value).subscribe({
+      next: () => {
+        this.toastService.success('Guardado!')
+        this.dialogRef.close();
+        this.generalStateService.dispachEvent()
+      }
+    })
+  }
+
+  public update() {
+    this.supplierServices.edit({
+      ...this.data,
+      name : this.supplierForm.get('name')?.value,
+      idNumber : this.supplierForm.get('idNumber')?.value
+    }).subscribe({
+      next: () => {
+        this.toastService.success('Actualizado!')
+        this.dialogRef.close();
+        this.generalStateService.dispachEvent()
+      }
+    })
+  }
+
+
 }

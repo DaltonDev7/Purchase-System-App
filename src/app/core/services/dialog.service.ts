@@ -9,6 +9,8 @@ import { Brand } from '../models/brand';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 import { UnitMeasurement } from '../models/unit-measurement';
 import { Department } from '../models/deparment';
+import { Supplier } from '../models/supplier';
+import { Article } from '../models/article';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +19,12 @@ export class DialogService {
 
   constructor(public dialog: MatDialog) { }
 
-  public openAddEditArticles() {
+  public openAddEditArticles(item?:Article) {
     this.dialog.open(AddEditArticlesComponent, {
       width: '350px',
       height: 'auto',
       disableClose: true,
+      data: item
     })
   }
 
@@ -34,11 +37,12 @@ export class DialogService {
     })
   }
 
-  public openAddEditSupplier() {
+  public openAddEditSupplier(item?:Supplier) {
     this.dialog.open(AddEditProvidersComponent, {
       width: '350px',
       height: 'auto',
       disableClose: true,
+      data: item
     })
   }
 
