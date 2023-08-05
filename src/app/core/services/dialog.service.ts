@@ -8,6 +8,7 @@ import { AddEditUnitMeasurementComponent } from 'src/app/shared/components/add-e
 import { Brand } from '../models/brand';
 import { ConfirmDeleteComponent } from 'src/app/shared/components/confirm-delete/confirm-delete.component';
 import { UnitMeasurement } from '../models/unit-measurement';
+import { Department } from '../models/deparment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,11 +25,12 @@ export class DialogService {
     })
   }
 
-  public openAddEditDeparments() {
+  public openAddEditDeparments(item?:Department) {
     this.dialog.open(AddEditDeparmentsComponent, {
       width: '350px',
       height: 'auto',
       disableClose: true,
+      data: item
     })
   }
 

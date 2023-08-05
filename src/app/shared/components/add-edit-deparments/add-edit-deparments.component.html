@@ -10,13 +10,20 @@
   
     <div class="section-form">
       <div class="row">
+
+        <form [formGroup]="departmentForm">
+
         <div class="col-12 mb-3">
-          <label for="">Descripcion</label>
-          <input type="text" class="form-control">
+          <label for="">Nombre</label>
+          <input upperCase type="text" class="form-control" formControlName="name">
         </div>
+
+        </form>
+
       </div>
-  
-      <button class="btn btn-success w-100">Guardar</button>
+
+      <button *ngIf="!isUpdate" class="btn btn-success w-100" [disabled]="!departmentForm.valid" (click)="save()">Guardar</button>
+      <button *ngIf="isUpdate" class="btn btn-success w-100" (click)="update()">Actualizar</button>
   
     </div>
 

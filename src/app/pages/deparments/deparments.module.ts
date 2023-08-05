@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListDeparmentsComponent } from './list-deparments/list-deparments.component';
 import { DeparmentsRoutingModule } from './deparments-routing.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -11,7 +12,8 @@ import { DeparmentsRoutingModule } from './deparments-routing.module';
   ],
   imports: [
     CommonModule,
-    DeparmentsRoutingModule
+    DeparmentsRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class DeparmentsModule { }
