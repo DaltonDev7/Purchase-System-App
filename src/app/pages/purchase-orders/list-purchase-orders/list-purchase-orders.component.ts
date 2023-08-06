@@ -31,13 +31,19 @@ export class ListPurchaseOrdersComponent implements OnInit {
     this.generalStateServices.getEvent().subscribe({
       next: () => {
         this.getData()
+        
+        
       }
     })
   }
 
   
   public getData() {
-    this.purchaseOrderServices.list().subscribe(data => this.purchaseOrderList = data)    
+    this.purchaseOrderServices.list().subscribe((data) =>{
+      this.purchaseOrderList = data
+      console.log(data);
+      
+    })    
   }
 
   public open() {

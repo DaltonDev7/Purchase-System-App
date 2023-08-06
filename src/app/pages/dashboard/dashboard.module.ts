@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NgChartsModule } from 'ng2-charts';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
@@ -13,7 +14,8 @@ import { NgChartsModule } from 'ng2-charts';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    NgChartsModule
+    NgChartsModule,
+    NgxMaskModule.forRoot(),
   ]
 })
 export class DashboardModule { }

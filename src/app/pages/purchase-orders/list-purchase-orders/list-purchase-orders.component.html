@@ -18,9 +18,9 @@
     <tbody>
         <tr *ngFor="let item of purchaseOrderList | paginate: { itemsPerPage: 10, currentPage: currentPage } ">
             <td>{{item.orderNumber}}</td>
-            <td>{{item.articleId}}</td>
-            <td>{{item.supplierId}}</td>
-            <td>{{item.departmentId}}</td>
+            <td>{{item.article.description}}</td>
+            <td>{{item.supplier.name}}</td>
+            <td>{{item.department.name}}</td>
             <td>{{item.quantity | mask: 'separator' }}</td>
             <td>RD$ {{item.unitCost}}</td>
             <td>RD$ {{item.total}}</td>
