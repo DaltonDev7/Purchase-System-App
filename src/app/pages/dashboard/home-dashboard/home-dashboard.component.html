@@ -22,3 +22,15 @@
       </div>
     </div>
   </div>
+
+
+  <div class="chart-wrapper">
+    <canvas baseChart 
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    chartType="bar">
+  </canvas>
+</div>
