@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
+import { ArticleService } from 'src/app/core/services/article.service';
 import { PurchaseOrderService } from 'src/app/core/services/purchase-order.service';
 
 
@@ -15,8 +16,8 @@ export interface MostArticleOrders {
 }
 
 interface barChartDataType {
-  data:number[]
-  label:string
+  data: number[]
+  label: string
 }
 
 @Component({
@@ -35,18 +36,20 @@ export class HomeDashboardComponent implements OnInit {
   barChartLegend = true;
   barChartPlugins = [];
   barChartData: barChartDataType[] = [
-    { 
-      data: [], 
-      label: 'Mejores Articulos' 
+    {
+      data: [],
+      label: 'Mejores Articulos'
     }
   ];
 
   public totalOrders: any;
+  public totalArticles!: number;
 
-  public showChart:boolean = false
+  public showChart: boolean = false
 
   constructor(
-    private purchaseOrderServices: PurchaseOrderService
+    private purchaseOrderServices: PurchaseOrderService,
+    private articleServices: ArticleService
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +59,9 @@ export class HomeDashboardComponent implements OnInit {
         this.totalOrders = data.total.toString()
       }
     })
+
+    this.articleServices.getTotalArticles().subscribe((data:any) => this.totalArticles = data)
+
 
     this.purchaseOrderServices.getMostPurchaseArticles().subscribe({
       next: (articles: MostArticleOrders[]) => {

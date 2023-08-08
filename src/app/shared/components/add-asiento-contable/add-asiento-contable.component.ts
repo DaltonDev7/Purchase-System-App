@@ -1,7 +1,15 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { ExternalApiService } from 'src/app/core/services/external-api.service';
+
+
+
+export interface MessageAsiento {
+  message:string
+  exito:boolean
+}
 
 @Component({
   selector: 'app-add-asiento-contable',
@@ -13,6 +21,7 @@ export class AddAsientoContableComponent implements OnInit {
   asientoForm!: FormGroup
 
   constructor(
+    private toast : ToastrService,
     private externalApi: ExternalApiService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<AddAsientoContableComponent>,
@@ -34,10 +43,9 @@ export class AddAsientoContableComponent implements OnInit {
 
   public save() {
     this.externalApi.createAccountingEntry(this.asientoForm.value).subscribe({
-      next: (data) => {
-        console.log(data);
-        console.log('enviado');
-        
+      next: (data:MessageAsiento) => {
+        this.toast.success(data.message)
+        this.asientoForm.reset()
       }
     })
 
