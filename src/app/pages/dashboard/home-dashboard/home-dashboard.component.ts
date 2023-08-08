@@ -113,7 +113,7 @@ export class HomeDashboardComponent implements OnInit {
           this.barChartLabels.push(item.articleName)
           this.barChartData[0].data.push(item.total)
         })
-        this.showChart = true
+        
       }
     })
 
@@ -126,7 +126,7 @@ export class HomeDashboardComponent implements OnInit {
           this.pieChartData.labels?.push(item.articleName)
           this.pieChartData.datasets[0].data.push(item.total)
         })
-
+        this.showChart = true
       }
     })
 
