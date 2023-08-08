@@ -32,7 +32,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
      BrowserAnimationsModule,
      MatDialogModule,
      NgSelectModule,
-
      FormsModule ,
      NgxPaginationModule,
      ToastrModule.forRoot(), // ToastrModule added

@@ -5,7 +5,7 @@
 
   <div class="container mt-4 mb-5">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="custom-card p-4">
           <h5 class="">Total ordenes de compras</h5>
           <p></p>
@@ -15,7 +15,7 @@
       </div>
 
 
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="custom-card p-4">
           <h5 class="">Total articulos</h5>
           <p></p>
@@ -27,8 +27,8 @@
     </div>
   </div>
 
-  <div class="d-flex justify-content-center">
-    <div class="chart-wrapper" *ngIf="showChart" style="width: 990px;">
+  <div class="d-flex justify-content-between" *ngIf="showChart">
+    <div class="chart-wrapper" style="width: 670px;">
       <h6 class="mt-3 mb-3">Articulos mas comprados</h6>
       <canvas 
        baseChart 
@@ -40,7 +40,20 @@
         chartType="bar">
       </canvas>
     </div>
+    <div style="width: 410px;">
+      <h6 class="mt-3 mb-3">Marcas mas usados</h6>
+      <canvas
+      baseChart
+      class="chart"
+      [data]="pieChartData"
+      [type]="pieChartType"
+      [options]="pieChartOptions"
+      [plugins]="pieChartPlugins"
+    >
+    </canvas>
+    </div>
   </div>
+
 
 </div>
 

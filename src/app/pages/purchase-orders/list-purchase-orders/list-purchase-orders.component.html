@@ -1,8 +1,28 @@
 <h3>Ordenes de compras</h3>
 
-<div class="d-flex">
-    <button class="btn btn-success mb-3" (click)="open()">Agregar orden</button>
-    <button class="btn mb-3" style="background-color: #004F83; color: #fff; margin-left: 12px;" (click)="openAsiento()">Generar Asiento contable</button>
+<div class="d-flex justify-content-between mb-5">
+    <div>
+        <button class="btn btn-success mb-3" (click)="open()">Agregar orden</button>
+    </div>
+
+    <div style="width: 340px;">
+        <form [formGroup]="buscadorForm">
+        <ng-select 
+           [items]="buscadorType" 
+           placeholder="Buscar por" 
+           bindLabel="text" 
+           bindValue="id" 
+           formControlName="buscarBy">
+        </ng-select>
+        <ng-select 
+           [items]="dataType" 
+           formControlName="IdData"
+           placeholder="Seleccione" 
+           bindLabel="text" 
+           bindValue="id" >
+        </ng-select>
+    </form>
+    </div>
 </div>
 
 <table class="table">

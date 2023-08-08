@@ -37,4 +37,8 @@ export abstract class BaseService<T> implements IBaseServices<T> {
   getById(id: number): Observable<any> {
     return this.http.get(environment.apiUrl + `/${this.endpoint}/${id}`);
   }
+
+  filter(params:any){
+    return this.http.get(environment.apiUrl + `/${this.endpoint}`, {params});
+  }
 }

@@ -7,46 +7,52 @@
             </div>
 
             <ul class="sidebar-nav">
-                <li class="sidebar-item" routerLink="/">
-                    <a class="sidebar-link">
+                <li class="sidebar-item" routerLink="/dashboard">
+                    <a class="sidebar-link" [routerLinkActive]="'active-option-sidenav'">
                         <i class="fa-solid fa-gauge conf-m"></i>
                         Dashboard
                     </a>
                 </li>
                 <li class="sidebar-item" routerLink="/articles">
-                    <a class="sidebar-link">
+                    <a class="sidebar-link" [routerLinkActive]="'active-option-sidenav'">
                         <i class="fa-solid fa-barcode conf-m"></i>
                         Articulos
                     </a>
                 </li>
                 <li class="sidebar-item" routerLink="/brand">
-                    <a class="sidebar-link">
+                    <a class="sidebar-link" [routerLinkActive]="'active-option-sidenav'">
                         <i class="fa-regular fa-square-minus conf-m"></i>
                         Marcas
                     </a>
                 </li>
                 <li class="sidebar-item" routerLink="/purchase-orders">
-                    <a class="sidebar-link">
+                    <a class="sidebar-link" [routerLinkActive]="'active-option-sidenav'">
                         <i class="fa-solid fa-cart-shopping conf-m"></i>
                        Ordenes de compras
                     </a>
                 </li>
                 <li class="sidebar-item" routerLink="/deparments">
-                    <a class="sidebar-link">
+                    <a class="sidebar-link" [routerLinkActive]="'active-option-sidenav'">
                         <i class="fa-solid fa-house conf-m"></i>
                         Departamentos
                     </a>
                 </li>
                 <li class="sidebar-item"  routerLink="/providers">
-                    <a class="sidebar-link conf-m">
+                    <a class="sidebar-link conf-m" [routerLinkActive]="'active-option-sidenav'">
                         <i class="fa-solid fa-users"></i>
                         Proveedores
                     </a>
                 </li>
                 <li class="sidebar-item" routerLink="/unit-measurement">
-                    <a class="sidebar-link conf-m">
+                    <a class="sidebar-link conf-m" [routerLinkActive]="'active-option-sidenav'">
                         <i class="fa-brands fa-unity"></i>
                         Unidad de medida
+                    </a>
+                </li>
+                <li class="sidebar-item" routerLink="/contabilidad">
+                    <a class="sidebar-link conf-m" [routerLinkActive]="'active-option-sidenav'">
+                        <i class="fa-regular fa-clipboard"></i>
+                        Contabilidad
                     </a>
                 </li>
             </ul>

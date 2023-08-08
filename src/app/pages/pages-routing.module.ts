@@ -2,11 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ContabilidadComponent } from './contabilidad/contabilidad.component';
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'dashboard',
+    pathMatch:'prefix'
+  },
+  {
+    path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path: 'contabilidad',
+    component: ContabilidadComponent
   },
   {
     path: 'articles',

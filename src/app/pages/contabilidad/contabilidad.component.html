@@ -1,0 +1,48 @@
+
+<h3>Asiento contables</h3>
+
+<!-- <div class="row mt-5 mb-5"> 
+    <div class="col-3">
+        <input type="text"  class="form-control" placeholder="Buscar">
+    </div>
+</div> -->
+
+<div class="mt-3 mb-3">
+    <button class="btn mb-3" style="background-color: #004F83; color: #fff; margin-left: 12px;" (click)="openAsiento()">Generar Asiento contable</button>
+</div>
+
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Auxiliar</th>
+            <th scope="col">Cuenta contable</th>
+            <th scope="col">descripcion</th>
+            <th scope="col">estado</th>
+            <th scope="col">Fecha Registro</th>
+            <th scope="col">Monto</th>
+            <th scope="col">tipoMovimiento</th>
+        </tr>
+    </thead>
+
+    <tbody *ngIf="!showSpinner">
+        <tr *ngFor="let item of dataAsiento | paginate: { itemsPerPage: 10, currentPage: currentPage } ">
+            <td>{{item.auxiliar}}</td>
+            <td>{{item.cuentaContable}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.estado}}</td>
+            <td>{{item.fechaRegistro | date}}</td>
+            <td>{{item.monto}}</td>
+            <td>{{item.tipoMovimiento}}</td>
+        </tr>
+
+        <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-center w-100">
+
+
+      <div class="spinner-border text-primary" role="status" style="width: 150px; height: 150px; margin-top: 10px;" *ngIf="showSpinner">
+        <span class="sr-only">Loading...</span>
+      </div>
+</div>

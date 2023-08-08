@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/enviroments/enviroments';
-import { MostArticleOrders, TotalOrders } from 'src/app/pages/dashboard/home-dashboard/home-dashboard.component';
+import { MarcasMasUsados, MostArticleOrders, TotalOrders } from 'src/app/pages/dashboard/home-dashboard/home-dashboard.component';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,9 @@ export class PurchaseOrderService extends BaseService<any>{
 
   public getMostPurchaseArticles(){
     return this.http.get<MostArticleOrders[]>(`${environment.apiUrl}/purchaseorder/MostPurchasedArticles`)
+  }
+  public getMostBrandsUsados(){
+    return this.http.get<MarcasMasUsados[]>(`${environment.apiUrl}/PurchaseOrder/MostPurchasedArticles`)
   }
 
 }

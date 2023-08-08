@@ -5,6 +5,8 @@ import { PurchaseOrdersRoutingModule } from './purchase-orders-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxUpperCaseDirectiveModule } from 'ngx-upper-case-directive';
 import { NgxMaskModule } from 'ngx-mask';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,6 +18,8 @@ import { NgxMaskModule } from 'ngx-mask';
     CommonModule,
     PurchaseOrdersRoutingModule,
     NgxPaginationModule,
+    NgSelectModule,
+    ReactiveFormsModule,
     NgxMaskModule.forRoot(),
   ]
 })
