@@ -14,8 +14,8 @@
     <tbody>
         <tr *ngFor="let item of article | paginate: { itemsPerPage: 10, currentPage: currentPage }">
             <td>{{item.description}}</td>
-            <td>{{item.brandId}}</td>
-            <td>{{item.measurementUnitId}}</td>
+            <td>{{item.brand.description}}</td>
+            <td>{{item.measurementUnit.description}}</td>
             <td>
                 <div>
                     <i class="fa-solid fa-trash btn-acciones" (click)="delete(item.id)" style="color: #EF3E36;"></i>

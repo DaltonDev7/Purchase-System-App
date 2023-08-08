@@ -1,6 +1,9 @@
 <h3>Ordenes de compras</h3>
 
-<button class="btn btn-success mb-3" (click)="open()">Agregar orden</button>
+<div class="d-flex">
+    <button class="btn btn-success mb-3" (click)="open()">Agregar orden</button>
+    <button class="btn mb-3" style="background-color: #004F83; color: #fff; margin-left: 12px;" (click)="openAsiento()">Generar Asiento contable</button>
+</div>
 
 <table class="table">
     <thead class="table-dark">
@@ -27,7 +30,8 @@
             <td>
                 <div>
                     <i class="fa-solid fa-trash btn-acciones" (click)="delete(item.id)" style="color: #EF3E36;"></i>
-                    <i class="fa-solid fa-pen-to-square btn-acciones" (click)="update(item)" style="color: #175676;"></i>
+                    <i class="fa-solid fa-pen-to-square btn-acciones" (click)="update(item)"
+                        style="color: #175676;"></i>
                 </div>
             </td>
         </tr>

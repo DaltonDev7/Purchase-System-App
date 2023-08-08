@@ -50,6 +50,9 @@ export class ListPurchaseOrdersComponent implements OnInit {
     this.dialogServices.openAddEditPurchaseOrder()
   }
 
+  public openAsiento(){
+    this.dialogServices.openGenerateAsiento()
+  }
 
   public update(item: PurchaseOrder) {
     this.dialogServices.openAddEditPurchaseOrder(item)

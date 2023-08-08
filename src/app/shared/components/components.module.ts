@@ -14,6 +14,7 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
 import { NgxUpperCaseDirectiveModule } from 'ngx-upper-case-directive';
 import { AddEditSupplierComponent } from './add-edit-supplier/add-edit-supplier.component';
 import { AddEditPurchaseOrderComponent } from './add-edit-purchase-order/add-edit-purchase-order.component';
+import { AddAsientoContableComponent } from './add-asiento-contable/add-asiento-contable.component';
 
 
 
@@ -27,7 +28,8 @@ import { AddEditPurchaseOrderComponent } from './add-edit-purchase-order/add-edi
     AddEditBrandComponent,
     ConfirmDeleteComponent,
     AddEditSupplierComponent,
-    AddEditPurchaseOrderComponent
+    AddEditPurchaseOrderComponent,
+    AddAsientoContableComponent
   ],
   imports: [
     CommonModule,

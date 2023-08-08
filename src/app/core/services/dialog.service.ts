@@ -13,6 +13,7 @@ import { Supplier } from '../models/supplier';
 import { Article } from '../models/article';
 import { PurchaseOrder } from '../models/purchase-order';
 import { AddEditPurchaseOrderComponent } from 'src/app/shared/components/add-edit-purchase-order/add-edit-purchase-order.component';
+import { AddAsientoContableComponent } from 'src/app/shared/components/add-asiento-contable/add-asiento-contable.component';
 
 @Injectable({
   providedIn: 'root'
@@ -86,6 +87,13 @@ export class DialogService {
     })
   }
 
+  public openGenerateAsiento(){
+    this.dialog.open(AddAsientoContableComponent, {
+      width: '350px',
+      height: 'auto',
+      disableClose: true,
+    })
+  }
 
 
 }

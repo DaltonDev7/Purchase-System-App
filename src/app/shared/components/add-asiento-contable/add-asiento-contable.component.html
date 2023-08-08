@@ -1,0 +1,33 @@
+<div class="section-modal">
+    <div class="d-flex justify-content-end">
+      <div (click)="close()">
+        <i class="fa-solid fa-xmark btn-close-modal"></i>
+      </div>
+    </div>
+    <h4>Generar asiento</h4>
+
+
+    <div class="section-form">
+        <div class="row">
+  
+          <form [formGroup]="asientoForm">
+  
+          <div class="col-12 mb-3">
+            <label for="">Descripcion</label>
+            <input upperCase type="text" class="form-control" formControlName="description">
+          </div>
+          <div class="col-12 mb-3">
+            <label for="">Monto</label>
+            <input mask="separator" thousandSeparator="," type="text" class="form-control" formControlName="monto">
+          </div>
+  
+          </form>
+  
+        </div>
+  
+        <button class="btn btn-success w-100" [disabled]="!asientoForm.valid" (click)="save()">Generar</button>
+    
+      </div>
+
+</div>
+
